@@ -1,13 +1,21 @@
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
+app.use(helmet());
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100
+});
+
+app.use(limiter);
 app.use(cors());
 app.use(express.json());
-console.log("MONGO URI:", process.env.MONGO_URI);
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("Mongo conectado correctamente"))
 .catch(err => console.error("Error Mongo:", err));
