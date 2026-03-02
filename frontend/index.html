@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ByteClinic - Reparación avanzada en España</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+    margin:0;
+    font-family: 'Inter', sans-serif;
+    background:#0b0f17;
+    color:white;
+}
+
+h1,h2 {
+    font-family:'Orbitron', sans-serif;
+    color:#00f2ff;
+}
+
+.hero {
+    text-align:center;
+    padding:100px 20px;
+}
+
+.button {
+    padding:15px 30px;
+    margin:10px;
+    border:none;
+    cursor:pointer;
+    background:linear-gradient(45deg,#00f2ff,#ff00c8);
+    color:black;
+    font-weight:bold;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.button:hover {
+    box-shadow:0 0 20px #00f2ff;
+}
+
+.form-section {
+    max-width:600px;
+    margin:50px auto;
+    padding:30px;
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+    backdrop-filter:blur(10px);
+}
+
+.total {
+    font-size:28px;
+    color:#00ff9c;
+    margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>BYTECLINIC</h1>
+    <p>Reparación avanzada de equipos en toda España</p>
+    <button class="button" onclick="scrollToForm()">Diagnosticar ahora</button>
+</div>
+
+<div class="form-section" id="form">
+    <h2>Presupuesto inteligente</h2>
+    <label><input type="checkbox" value="50" onchange="calcular()"> Formateo + Windows (50€)</label><br>
+    <label><input type="checkbox" value="40" onchange="calcular()"> Cambio SSD (40€)</label><br>
+    <label><input type="checkbox" value="35" onchange="calcular()"> Limpieza interna (35€)</label><br>
+    <label><input type="checkbox" value="30" onchange="calcular()"> Ampliación RAM (30€)</label><br>
+    <label><input type="checkbox" value="70" onchange="calcular()"> Pantalla portátil (70€)</label><br>
+    <label><input type="checkbox" value="18" onchange="calcular()"> Recogida y devolución (18€)</label>
+
+    <div class="total">
+        Total estimado: <span id="total">20</span> €
+    </div>
+</div>
+
+<script>
+function calcular(){
+    let total = 20;
+    document.querySelectorAll('input[type=checkbox]:checked').forEach(el=>{
+        total += parseInt(el.value);
+    });
+    document.getElementById("total").innerText = total;
+}
+
+function scrollToForm(){
+    document.getElementById("form").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
