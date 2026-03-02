@@ -5,7 +5,8 @@ const precios = {
   limpieza: 35,
   ram: 30,
   pantalla: 70,
-  envio: 18
+  envio: 18,
+  montaje: 80
 };
 
 function calcularTotal(servicios, envio) {
