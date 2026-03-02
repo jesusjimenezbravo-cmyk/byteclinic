@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
+app.set('trust proxy', 1);
 app.use(helmet());
 app.get("/", (req, res) => {
   res.send("ByteClinic API activa");
