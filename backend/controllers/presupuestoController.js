@@ -18,7 +18,11 @@ exports.crearPresupuesto = async (req, res) => {
     });
 
     await nuevaSolicitud.save();
-    await enviarEmail(req.body, totalReal);
+    try {
+  await enviarEmail(req.body, totalReal);
+} catch (error) {
+  console.error("Error enviando email:", error.message);
+}
     res.status(201).json({
       mensaje: "Presupuesto guardado correctamente",
       total: totalReal
